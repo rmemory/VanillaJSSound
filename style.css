@@ -1,50 +1,123 @@
 html {
+	/* Provide a baseline font size for rem units */
 	font-size: 10px;
-	background: url(img/heaven.jpg) bottom center;
+
+	/* A background image 
+	background: url(img/heaven.jpg) bottom center;*/
+
+	/* cover the screen with the background image */
 	background-size: cover;
-  }
-  body,html {
+	}
+	
+body,html {
 	margin: 0;
 	padding: 0;
+	width: 100%;
 	font-family: sans-serif;
   }
   
   .keys {
+	/* Use flex layout for all children, which are key divs */
 	display: flex;
-	flex: 1;
+
+	/* On narrow screens, list the keys veritically */
+	flex-direction: column;
+
+	/* Require 100% of viewport height */
 	min-height: 100vh;
+
+	/* 
+		On narrow screens the main flex axis is verical. On
+		wider screens main flex axis is (horizontal). The
+		align-items affects the cross axis direction.
+		
+		We'll just use a center alignment to place the keys
+		center point of the cross axis.
+	*/
 	align-items: center;
+
+	/*
+		This affects how each key is spaced along the main axis.
+		We could have used space-between, but the usage of center
+		causes a nice tight group of keys towards the center of 
+		the screen, and we'll add a bit of margin around each key 
+		below.
+	*/
 	justify-content: center;
   }
 
 .key {
+	/* Put a solid black border around each key */
 	border:.4rem solid black;
+
+	/* Put some slightly rounded corners on each key */
 	border-radius:.5rem;
+
+	/* Add some spacing between each key (as mentioned above) */
 	margin:1rem;
+
+	/* Create font size that is 1.5 times larger than the root
+	   font size */
 	font-size:1.5rem;
+
+	/* Add a bit of padding around each key */
 	padding:1rem .5rem;
+
+	/* A short transition time when the transform is applied
+	   by the javascript (ie. when the keyboard key is pressed) */
 	transition:all 0.07s ease;
+
+	/* Fix the width of the key */
 	width:10rem;
+
+	/* Center the text in each key */
 	text-align:center;
+
 	color:white;
+
+	/* A black background with plenty of transparency to see 
+	   the background image */
 	background:rgba(0,0,0,0.4);
+
+	/* Create a slight text shadow without any offsets */
 	text-shadow:0 0 .5rem black;
 }
 
+/* This style will be applied by the javascript to each key
+   when the key is pressed */
 .playing {
 	transform:scale(1.1);
 	border-color:#ffc600;
 	box-shadow:0 0 1rem #ffc600;
 }
 
+/* A selector for each kbd tag */
 kbd {
+	/* Put a new line after each letter */
 	display: block;
+
+	/* A nice big font size for the letter */
 	font-size: 4rem;
 }
 
+/* This class is used for the sound text in each key block */
 .sound {
 	font-size: 1.2rem;
 	text-transform: uppercase;
+
+	/* Add a bit more spacing between letters */
 	letter-spacing: .1rem;
 	color: #ffc600;
+}
+
+@media all and (min-width: 768px) {
+  html {
+		/* A wide background image */
+		background: url(img/heaven.jpg) bottom center;
+		}
+
+	.keys {
+		/* On wider screens use a row layout */
+		flex-direction: row;
+	}
 }

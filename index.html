@@ -8,6 +8,10 @@
 </head>
 <body>
 	<div class="keys">
+		<!-- The <kbd> tag is used to identify text that represents user 
+			 keyboard input. Text surrounded by <kbd> tags is typically 
+			 displayed in the browser's default monospace font. And
+			 there is a kbd selector in the style.css -->
 		<div data-key="65" class="key">
 			<kbd>A</kbd>
 			<span class="sound">clap</span>
@@ -77,8 +81,10 @@
 
 	// get a node list (not array) of all elements that have a class of key
 	const keys = document.querySelectorAll('.key');
+	
 	// Add callback to remove the 'playing' css class when the transition is complete
 	keys.forEach(key => key.addEventListener('transitionend', removeTransistion));
+
 	// play sound and attach 'playing' css class to animate the div
 	window.addEventListener('keydown', playSound);
 </script>
