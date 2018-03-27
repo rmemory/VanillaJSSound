@@ -99,12 +99,14 @@ kbd {
 }
 
 /* This class is used for the sound text in each key block */
-.sound {
+.sound-text {
 	font-size: 1.2rem;
 	text-transform: uppercase;
 
 	/* Add a bit more spacing between letters */
 	letter-spacing: .1rem;
+
+	/* Yellow font for sound text */
 	color: #ffc600;
 }
 

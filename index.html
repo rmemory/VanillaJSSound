@@ -14,39 +14,39 @@
 			 there is a kbd selector in the style.css -->
 		<div data-key="65" class="key">
 			<kbd>A</kbd>
-			<span class="sound">clap</span>
+			<span class="sound-text">clap</span>
 		</div>
 		<div data-key="83" class="key">
 			<kbd>S</kbd>
-			<span class="sound">hihat</span>
+			<span class="sound-text">hihat</span>
 		</div>
 		<div data-key="68" class="key">
 			<kbd>D</kbd>
-			<span class="sound">kick</span>
+			<span class="sound-text">kick</span>
 		</div>
 		<div data-key="70" class="key">
 			<kbd>F</kbd>
-			<span class="sound">openhat</span>
+			<span class="sound-text">openhat</span>
 		</div>
 		<div data-key="71" class="key">
 			<kbd>G</kbd>
-			<span class="sound">boom</span>
+			<span class="sound-text">boom</span>
 		</div>
 		<div data-key="72" class="key">
 			<kbd>H</kbd>
-			<span class="sound">ride</span>
+			<span class="sound-text">ride</span>
 		</div>
 		<div data-key="74" class="key">
 			<kbd>J</kbd>
-			<span class="sound">snare</span>
+			<span class="sound-text">snare</span>
 		</div>
 		<div data-key="75" class="key">
 			<kbd>K</kbd>
-			<span class="sound">tom</span>
+			<span class="sound-text">tom</span>
 		</div>
 		<div data-key="76" class="key">
 			<kbd>L</kbd>
-			<span class="sound">tink</span>
+			<span class="sound-text">tink</span>
 		</div>
 	</div>
 
@@ -63,11 +63,20 @@
 <script>
 	function playSound(e) {
 		// Select the audio element associated with the proper data-key
-		const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
-		// Select the div element associated with the proper data-key, with a
-		// class of key
-		const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+		data_key_value = e.keyCode;
+		audio = document.querySelector(`audio[data-key="${data_key_value}"]`);
+
+		/* If it was a mouse click, play the sound as well */
+		if (!audio && e.type === 'click' && e.currentTarget && e.currentTarget.className &&
+		    e.currentTarget.className === 'key') {
+				data_key_value = e.currentTarget.getAttribute("data-key");
+				audio = document.querySelector(`audio[data-key="${data_key_value}"]`);
+		}
 		if (!audio) return; // for other keys not listed above dont do anything
+
+		// Select the div element associated with the proper data-key, with a
+		// class of key, to add the graphical transition
+		const key = document.querySelector(`.key[data-key="${data_key_value}"]`);
 		audio.currentTime = 0; // always rewind audio to start
 		audio.play();
 		key.classList.add('playing');
@@ -84,6 +93,8 @@
 	
 	// Add callback to remove the 'playing' css class when the transition is complete
 	keys.forEach(key => key.addEventListener('transitionend', removeTransistion));
+	
+	keys.forEach(key => key.addEventListener('click', playSound));
 
 	// play sound and attach 'playing' css class to animate the div
 	window.addEventListener('keydown', playSound);
