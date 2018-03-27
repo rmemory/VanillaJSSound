@@ -2,8 +2,9 @@ html {
 	/* Provide a baseline font size for rem units */
 	font-size: 10px;
 
-	/* A background image 
-	background: url(img/heaven.jpg) bottom center;*/
+	/* A background image (partially clipped on 
+	   smaller screens) */
+	background: url(img/heaven.jpg);
 
 	/* cover the screen with the background image */
 	background-size: cover;
@@ -37,13 +38,10 @@ body,html {
 	align-items: center;
 
 	/*
-		This affects how each key is spaced along the main axis.
-		We could have used space-between, but the usage of center
-		causes a nice tight group of keys towards the center of 
-		the screen, and we'll add a bit of margin around each key 
-		below.
+		For narrow screens, its best if we start as close to the
+		top as possible. 
 	*/
-	justify-content: center;
+	justify-content: flex-start;
   }
 
 .key {
@@ -53,8 +51,8 @@ body,html {
 	/* Put some slightly rounded corners on each key */
 	border-radius:.5rem;
 
-	/* Add some spacing between each key (as mentioned above) */
-	margin:1rem;
+	/* Small margin on small screens */
+	margin: 0.25rem;
 
 	/* Create font size that is 1.5 times larger than the root
 	   font size */
@@ -68,7 +66,7 @@ body,html {
 	transition:all 0.07s ease;
 
 	/* Fix the width of the key */
-	width:10rem;
+	width:7rem;
 
 	/* Center the text in each key */
 	text-align:center;
@@ -97,7 +95,7 @@ kbd {
 	display: block;
 
 	/* A nice big font size for the letter */
-	font-size: 4rem;
+	font-size: 2rem;
 }
 
 /* This class is used for the sound text in each key block */
@@ -112,12 +110,29 @@ kbd {
 
 @media all and (min-width: 768px) {
   html {
-		/* A wide background image */
+		/* The full background image */
 		background: url(img/heaven.jpg) bottom center;
-		}
+	}
 
 	.keys {
 		/* On wider screens use a row layout */
 		flex-direction: row;
+
+		/* Center main-axis justification looks better when 
+		   possible */
+		justify-content: center;
+	}
+
+	.key {
+		/* Add some spacing between each key (as mentioned above) */
+		margin:1rem;
+		
+		/* Fix the width of the key */
+		width:10rem;
+	}
+
+	/* Use a nice large font for wide screens */
+	kbd {
+		font-size: 4rem;
 	}
 }
