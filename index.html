@@ -66,25 +66,29 @@
 
 	  	// When you create a variable make sure you use var (for older JS) or let/const (for new JS)
 	  	// A variable without var/let/const javascript automatically applies the variable onto the global scope
-	  	// In over words data_key_value is on the window object after this line, and can be changed from any other function (this is bug prone code)
-		data_key_value = e.keyCode;
-		audio = document.querySelector(`audio[data-key="${data_key_value}"]`);
+	  	// In over words data_key_value is on the window object after this line, and can be changed from any other 
+		//  function (ie. without the var/let declaration, it is bug prone code).
+		let data_key_value = e.keyCode;
+		let audio = document.querySelector(`audio[data-key="${data_key_value}"]`);
 
 		/* If it was a mouse click, play the sound as well */
 
-	  	// The null checks here are fine. Do you need them all the time? Not necessarily. It doesn't hurt much to have them
-	  	// If you think there might be a chance that there is no 'currentTarget', then it might be wise to come up with the 'else' case for this.
+	  	// The null checks here are fine. Do you need them all the time? Not necessarily. It doesn't hurt much to 
+		// have them. If you think there might be a chance that there is no 'currentTarget', then it might be wise 
+		// to come up with the 'else' case for this.
 		if (!audio && e.type === 'click' && e.currentTarget && e.currentTarget.className &&
 
 			/*
 			* The difference between 'e.target' and 'e.currentTarget' is:
 			*
-			* target: the element on which the event occurred. You can add an 'onclick' event listener to a container that
-			* has children elements, you may end up clicking one of the children. This will still trigger the event
+			* target: the element on which the event occurred. You can add an 'onclick' event listener to a container 
+			* that has children elements, you may end up clicking one of the children. This will still trigger the event
 			* since if you click on the child, you are also technically clicking on the parent (not the other way around)
 			*
 			* currentTarget: the element on which the event listener is applied. Regardless which child is clicked
 			* the event listener element is set as the currentTarget.
+			* 
+			* See: https://github.com/rmemory/VanillaJSTargetVsCurrentTarget
 			* */
 		    e.currentTarget.className === 'key') {
 				data_key_value = e.currentTarget.getAttribute("data-key");
@@ -102,6 +106,7 @@
 
 	function removeTransistion(e) {
 		if (e.propertyName !== 'transform') return; // Do nothing if the event is not a transform
+
 		// this is div element with a key class because that is how its called below
 		this.classList.remove('playing');
 	}
