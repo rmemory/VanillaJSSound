@@ -3,4 +3,17 @@ This project associates a sound and HTML transition with a particular keycode. J
 
 See this website for a quick and easy way to display keycode values: http://keycode.info/
 
-This is based on and originates from a demo from Wes Bos. I've added a few comments, reorganized some styling, added (weak) support for mobile, added mouse click support, etc. But the original idea and structure is from him.
+This project originates from and is largely based on a tutuorial from Wes Bos. I've added a few comments, reorganized some styling, added (weak) support for mobile, added mouse click support, etc. But the original idea and structure is from him.
+
+This project demonstrates a few things:
+
+* Adding event listeners for mouse clicks, keydown, and transitionend (as opposed to using a timer function) events. 
+* Node List foreach loops (instead of arrays)
+* JS query selection on classes (.key) and HTML tags, and examples of the JS attribute selector [] syntax
+* Playing an audio tag
+* Example of using "event.currentTarget". Also see, https://github.com/rmemory/VanillaJSTargetVsCurrentTarget.
+* Adding and removing a class from a tag using <element>.classList.add and <element>.classList.add.
+* Simple usage of CSS Flex, and mobile support
+* CSS transforms and transitions. 
+  
+To view this project, simply clone it, and open index.html in your browswer. No databases, routing, or any backend required.
