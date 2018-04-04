@@ -66,7 +66,7 @@
 
 	  	// When you create a variable make sure you use var (for older JS) or let/const (for new JS)
 	  	// A variable without var/let/const javascript automatically applies the variable onto the global scope
-	  	// In over words data_key_value is on the window object after this line, and can be changed from any other 
+	  	// In other words data_key_value is on the window object after this line, and can be changed from any other 
 		//  function (ie. without the var/let declaration, it is bug prone code).
 		let data_key_value = e.keyCode;
 		let audio = document.querySelector(`audio[data-key="${data_key_value}"]`);
