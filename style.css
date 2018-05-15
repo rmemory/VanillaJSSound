@@ -24,12 +24,12 @@ body,html {
 	/* On narrow screens, list the keys veritically */
 	flex-direction: column;
 
-	/* Require 100% of viewport height */
+	/* Require at least 100% of viewport height */
 	min-height: 100vh;
 
 	/* 
-		On narrow screens the main flex axis is verical. On
-		wider screens main flex axis is (horizontal). The
+		On narrow screens the main flex axis is vertical. On
+		wider screens main flex axis is horizontal. The
 		align-items affects the cross axis direction.
 		
 		We'll just use a center alignment to place the keys
@@ -61,8 +61,9 @@ body,html {
 	/* Add a bit of padding around each key */
 	padding:1rem .5rem;
 
-	/* A short transition time when the transform is applied
-	   by the javascript (ie. when the keyboard key is pressed) */
+	/* A short transition time when a class is applied
+	   by the javascript (ie. when the keyboard key is pressed)
+	   In this case, the .playing class will be added. */
 	transition:all 0.07s ease;
 
 	/* Fix the width of the key */

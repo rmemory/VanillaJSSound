@@ -7,12 +7,23 @@ This project originates from and is largely based on a tutuorial from Wes Bos. I
 This project demonstrates a few things:
 
 * Adding event listeners for mouse clicks, keydown, and transitionend (as opposed to using a timer function) events. 
+
 * Node List foreach loops (instead of arrays)
+
 * JS query selection on classes (.key) and HTML tags, and examples of the JS attribute selector [] syntax
+
+* If you want to see usage of the "dataset" selector instead of
+  "data-" used here, go look in the following repo:
+   https://github.com/rmemory/VanillaJSUpdateCss
+
 * Playing an audio tag
+
 * Example of using "event.currentTarget". Also see, https://github.com/rmemory/VanillaJSTargetVsCurrentTarget.
+
 * Adding and removing a class from a tag using <element>.classList.add and <element>.classList.add.
+
 * Simple usage of CSS Flex, and mobile support
+
 * CSS transforms and transitions. 
   
 To view this project, simply clone it, and open index.html in your browswer. No databases, routing, or any backend required.

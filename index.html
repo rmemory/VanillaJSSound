@@ -3,14 +3,19 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Vanilla JS Sound</title>
+
+	<!-- Magic line which causes the visible viewport on a mobile device to
+		 be the entire viewport, otherwise the viewport is the virtual viewport
+		 which is much larger (wider) than the screen -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
 	<link rel="stylesheet" type="text/css" media="screen" href="style.css">
 </head>
 <body>
 	<div class="keys">
 		<!-- The <kbd> tag is used to identify text that represents user 
 			 keyboard input. Text surrounded by <kbd> tags is typically 
-			 displayed in the browser's default monospace font. And
+			 displayed in the browser's default monospace font. And note
 			 there is a kbd selector in the style.css -->
 		<div data-key="65" class="key">
 			<kbd>A</kbd>
